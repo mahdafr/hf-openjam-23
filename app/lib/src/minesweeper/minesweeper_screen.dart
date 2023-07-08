@@ -57,7 +57,7 @@ class _MinesweeperScreen extends State<MinesweeperScreen> {
       child: IgnorePointer(
         ignoring: _duringCelebration,
         child: Scaffold(
-          backgroundColor: palette.backgroundPlaySession,
+          backgroundColor: palette.backgroundSession,
           body: Stack(
             children: [
               Center(

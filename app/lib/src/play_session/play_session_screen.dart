@@ -16,8 +16,8 @@ import '../game_internals/level_state.dart';
 import '../games_services/games_services.dart';
 import '../games_services/score.dart';
 import '../in_app_purchase/in_app_purchase.dart';
-import '../level_selection/levels.dart';
 import '../player_progress/player_progress.dart';
+import '../level_selection/levels.dart';
 import '../style/confetti.dart';
 import '../style/palette.dart';
 
@@ -57,7 +57,7 @@ class _PlaySessionScreenState extends State<PlaySessionScreen> {
       child: IgnorePointer(
         ignoring: _duringCelebration,
         child: Scaffold(
-          backgroundColor: palette.backgroundPlaySession,
+          backgroundColor: palette.backgroundSession,
           body: Stack(
             children: [
               Center(

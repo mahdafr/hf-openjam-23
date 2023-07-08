@@ -31,7 +31,7 @@ class MainMenuScreen extends StatelessWidget {
           child: Transform.rotate(
             angle: -0.1,
             child: const Text(
-              'Hey, Gera!',
+              'Choose your doggo!',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: 'Permanent Marker',
@@ -47,17 +47,9 @@ class MainMenuScreen extends StatelessWidget {
             FilledButton(
               onPressed: () {
                 audioController.playSfx(SfxType.buttonTap);
-                GoRouter.of(context).go('/daily');
+                GoRouter.of(context).go('/select');
               },
-              child: const Text('Daily Challenge'),
-            ),
-            _gap,
-            FilledButton(
-              onPressed: () {
-                audioController.playSfx(SfxType.buttonTap);
-                GoRouter.of(context).go('/play');
-              },
-              child: const Text('Zen Mode'),
+              child: const Text('Select dogio'),
             ),
             _gap,
             if (gamesServicesController != null) ...[

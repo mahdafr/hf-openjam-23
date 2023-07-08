@@ -19,14 +19,12 @@ import 'src/ads/ads_controller.dart';
 import 'src/app_lifecycle/app_lifecycle.dart';
 import 'src/audio/audio_controller.dart';
 import 'src/crashlytics/crashlytics.dart';
+import 'src/dogio/character_selection.dart';
+import 'src/dogio/main_menu.dart';
+import 'src/dogio/play_session.dart';
 import 'src/games_services/games_services.dart';
 import 'src/games_services/score.dart';
 import 'src/in_app_purchase/in_app_purchase.dart';
-import 'src/level_selection/level_carousel_screen.dart';
-import 'src/level_selection/levels.dart';
-import 'src/main_menu/main_menu_screen.dart';
-import 'src/minesweeper/minesweeper_screen.dart';
-import 'src/play_session/play_session_screen.dart';
 import 'src/player_progress/persistence/local_storage_player_progress_persistence.dart';
 import 'src/player_progress/persistence/player_progress_persistence.dart';
 import 'src/player_progress/player_progress.dart';
@@ -133,59 +131,18 @@ class MyApp extends StatelessWidget {
               const MainMenuScreen(key: Key('main menu')),
           routes: [
             GoRoute(
-              path: 'daily',
-              pageBuilder: (context, state) {
-                const levelNumber = -1;
-                final level = gameLevels
-                    .singleWhere((e) => e.number == levelNumber);
-                return buildMyTransition<void>(
-                  child: PlaySessionScreen(
-                    level,
-                    key: const Key('play daily session'),
-                  ),
-                  color: context.watch<Palette>().backgroundPlaySession,
-                );
-              },
-              routes: [
-                GoRoute(
-                  path: 'won',
-                  pageBuilder: (context, state) {
-                    final map = state.extra! as Map<String, dynamic>;
-                    final score = map['score'] as Score;
-                    return buildMyTransition<void>(
-                      child: WinGameScreen(
-                        score: score,
-                        key: const Key('win game'),
-                        returnToMain: true,
-                      ),
-                      color: context.watch<Palette>().backgroundPlaySession,
-                    );
-                  },
-                ),
-              ],
-            ),
-            GoRoute(
-                path: 'play',
+                path: 'select',
                 pageBuilder: (context, state) => buildMyTransition<void>(
-                      child: LevelSelectionScreen(
-                          key: Key('level selection')),
-                      color: context.watch<Palette>().backgroundLevelSelection,
+                      child: CharacterSelectionScreen(key: Key('character selection')),
+                      color: context.watch<Palette>().backgroundSelection,
                     ),
                 routes: [
                   GoRoute(
-                    path: 'session/:level',
-                    pageBuilder: (context, state) {
-                      final levelNumber = int.parse(state.params['level']!);
-                      final level = gameLevels
-                          .singleWhere((e) => e.number == levelNumber);
-                      return buildMyTransition<void>(
-                        child: PlaySessionScreen(
-                          level,
-                          key: const Key('play session'),
-                        ),
-                        color: context.watch<Palette>().backgroundPlaySession,
-                      );
-                    },
+                    path: 'play',
+                    pageBuilder: (context, state) => buildMyTransition<void>(
+                        child: PlaySessionScreen(key: Key('play session')),
+                        color: context.watch<Palette>().backgroundSession,
+                      ),
                   ),
                   GoRoute(
                     path: 'won',
@@ -199,43 +156,30 @@ class MyApp extends StatelessWidget {
                           key: const Key('win game'),
                           returnToMain: false,
                         ),
-                        color: context.watch<Palette>().backgroundPlaySession,
+                        color: context.watch<Palette>().backgroundWin,
                       );
                     },
                   ),
                   GoRoute(
-                    path: 'session/minesweeper/:level',
-                    pageBuilder: (context, state) {
-                      final levelNumber = int.parse(state.params['level']!);
-                      final level = gameLevels
-                          .singleWhere((e) => e.number == levelNumber);
-                      return buildMyTransition<void>(
-                        child: MinesweeperScreen(
-                          level,
-                          key: const Key('play session'),
-                        ),
-                        color: context.watch<Palette>().backgroundPlaySession,
-                      );
-                    },
+                    path: 'play',
+                    pageBuilder: (context, state) => buildMyTransition<void>(
+                        child: PlaySessionScreen(key: const Key('play session')),
+                        color: context.watch<Palette>().backgroundSession,
+                      ),
                   ),
                 ]),
             GoRoute(
               path: 'settings',
-              builder: (context, state) =>
-                  const SettingsScreen(key: Key('settings')),
+              builder: (context, state) => const SettingsScreen(key: Key('settings')),
             ),
           ]),
     ],
   );
 
   final PlayerProgressPersistence playerProgressPersistence;
-
   final SettingsPersistence settingsPersistence;
-
   final GamesServicesController? gamesServicesController;
-
   final InAppPurchaseController? inAppPurchaseController;
-
   final AdsController? adsController;
 
   const MyApp({
