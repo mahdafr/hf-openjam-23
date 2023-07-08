@@ -84,4 +84,4 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 
-.dart_tool/
+app/.dart_tool/
