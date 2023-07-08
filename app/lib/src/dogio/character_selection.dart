@@ -20,7 +20,7 @@ class CharacterSelectionScreen extends StatefulWidget {
 }
 
 class _CharacterSelectionScreen extends State<CharacterSelectionScreen> {
-  static final _log = Logger('play_session.dart');
+  static final _log = Logger('character_selection.dart');
 
   double _anchor = 0.0;
   bool _center = true;
@@ -117,7 +117,7 @@ class _CharacterSelectionScreen extends State<CharacterSelectionScreen> {
               child: Text('Let\'s go!'),
               onPressed: () {
                 print('misha wants to play puzzle: ${_anchor.toStringAsFixed(2)}');
-                GoRouter.of(context).go('/play/session/${_anchor.toStringAsFixed(2)}');
+                GoRouter.of(context).go('/play');
               },
             ),
           ],

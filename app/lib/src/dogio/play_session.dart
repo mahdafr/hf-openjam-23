@@ -91,7 +91,7 @@ class _PlaySessionScreen extends State<PlaySessionScreen> {
                       child: SizedBox(
                         width: double.infinity,
                         child: FilledButton(
-                          onPressed: () => GoRouter.of(context).go('/play'),
+                          onPressed: () => GoRouter.of(context).go('/select'),
                           child: const Text('Back'),
                         ),
                       ),
