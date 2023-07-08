@@ -135,39 +135,31 @@ class MyApp extends StatelessWidget {
                 pageBuilder: (context, state) => buildMyTransition<void>(
                       child: CharacterSelectionScreen(key: Key('character selection')),
                       color: context.watch<Palette>().backgroundSelection,
-                    ),
-                routes: [
-                  GoRoute(
-                    path: 'play',
-                    pageBuilder: (context, state) => buildMyTransition<void>(
-                        child: PlaySessionScreen(key: Key('play session')),
-                        color: context.watch<Palette>().backgroundSession,
-                      ),
-                  ),
-                  GoRoute(
-                    path: 'won',
-                    pageBuilder: (context, state) {
-                      final map = state.extra! as Map<String, dynamic>;
-                      final score = map['score'] as Score;
+                    )),
+            GoRoute(
+              path: 'play',
+              pageBuilder: (context, state) => buildMyTransition<void>(
+                  child: PlaySessionScreen(key: Key('play session')),
+                  color: context.watch<Palette>().backgroundSession,
+                ),
+              routes: [
+                GoRoute(
+                  path: 'won',
+                  pageBuilder: (context, state) {
+                    final map = state.extra! as Map<String, dynamic>;
+                    final score = map['score'] as Score;
 
-                      return buildMyTransition<void>(
-                        child: WinGameScreen(
-                          score: score,
-                          key: const Key('win game'),
-                          returnToMain: false,
-                        ),
-                        color: context.watch<Palette>().backgroundWin,
-                      );
-                    },
-                  ),
-                  GoRoute(
-                    path: 'play',
-                    pageBuilder: (context, state) => buildMyTransition<void>(
-                        child: PlaySessionScreen(key: const Key('play session')),
-                        color: context.watch<Palette>().backgroundSession,
+                    return buildMyTransition<void>(
+                      child: WinGameScreen(
+                        score: score,
+                        key: const Key('win game'),
+                        returnToMain: false,
                       ),
-                  ),
-                ]),
+                      color: context.watch<Palette>().backgroundWin,
+                    );
+                  },
+                ),
+              ]),
             GoRoute(
               path: 'settings',
               builder: (context, state) => const SettingsScreen(key: Key('settings')),
@@ -237,7 +229,7 @@ class MyApp extends StatelessWidget {
           final palette = context.watch<Palette>();
 
           return MaterialApp.router(
-            title: 'Minesweeper 2.0',
+            title: 'dog.io',
             theme: ThemeData.from(
               colorScheme: ColorScheme.fromSeed(
                 seedColor: palette.darkPen,
