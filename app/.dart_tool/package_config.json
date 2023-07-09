@@ -39,7 +39,7 @@
     },
     {
       "name": "async",
-      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/async-2.10.0",
+      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/async-2.11.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -92,8 +92,14 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "carousel_slider",
+      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/carousel_slider-4.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "characters",
-      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/characters-1.2.1",
+      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/characters-1.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -117,9 +123,9 @@
     },
     {
       "name": "collection",
-      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/collection-1.17.0",
+      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/collection-1.17.1",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.18"
     },
     {
       "name": "convert",
@@ -197,7 +203,7 @@
       "name": "flutter",
       "rootUri": "file:///home/mahdafr/.flutter/packages/flutter",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.0"
     },
     {
       "name": "flutter_launcher_icons",
@@ -215,13 +221,13 @@
       "name": "flutter_test",
       "rootUri": "file:///home/mahdafr/.flutter/packages/flutter_test",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.0"
     },
     {
       "name": "flutter_web_plugins",
       "rootUri": "file:///home/mahdafr/.flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.0"
     },
     {
       "name": "frontend_server_client",
@@ -321,9 +327,9 @@
     },
     {
       "name": "js",
-      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/js-0.6.5",
+      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/js-0.6.7",
       "packageUri": "lib/",
-      "languageVersion": "2.16"
+      "languageVersion": "2.19"
     },
     {
       "name": "json_annotation",
@@ -345,7 +351,7 @@
     },
     {
       "name": "matcher",
-      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/matcher-0.12.13",
+      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/matcher-0.12.15",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -357,7 +363,7 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/meta-1.8.0",
+      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/meta-1.9.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -387,7 +393,7 @@
     },
     {
       "name": "path",
-      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/path-1.8.2",
+      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/path-1.8.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -545,7 +551,7 @@
       "name": "sky_engine",
       "rootUri": "file:///home/mahdafr/.flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "source_map_stack_trace",
@@ -597,19 +603,19 @@
     },
     {
       "name": "test",
-      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/test-1.22.0",
+      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/test-1.24.1",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "test_api",
-      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/test_api-0.4.16",
+      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/test_api-0.5.1",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "test_core",
-      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/test_core-0.4.20",
+      "rootUri": "file:///home/mahdafr/.pub-cache/hosted/pub.dev/test_core-0.5.1",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -692,7 +698,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-07-09T03:18:38.693362Z",
+  "generated": "2023-07-09T04:34:17.096577Z",
   "generator": "pub",
-  "generatorVersion": "2.19.6"
+  "generatorVersion": "3.0.5"
 }

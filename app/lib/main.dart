@@ -134,8 +134,7 @@ class MyApp extends StatelessWidget {
             GoRoute(
                 path: 'select',
                 pageBuilder: (context, state) => buildMyTransition<void>(
-                      child: CharacterSelectionScreen(
-                          key: Key('character selection')),
+                      child: CharacterSelectionScreen(),
                       color: context.watch<Palette>().backgroundSelection,
                     )),
             GoRoute(
