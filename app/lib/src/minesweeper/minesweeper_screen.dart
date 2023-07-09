@@ -1,7 +1,7 @@
 // Copyright 2022, the Flutter project authors. Please see the AUTHORS file
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
-
+import 'dart:async';
 import 'dart:collection' show IterableMixin;
 import 'dart:math';
 import 'dart:ui';
@@ -191,16 +191,23 @@ class _MinesweeperScreen extends State<MinesweeperScreen>
   }
 }
 
+class TimerNotifier extends ChangeNotifier {
+  TimerNotifier() {
+    const Duration oneSec = Duration(milliseconds: 20);
+    Timer.periodic(oneSec, notifyAllListeners);
+  }
+
+  void notifyAllListeners(Timer time) {
+    notifyListeners();
+  }
+}
+
 // CustomPainter is what is passed to CustomPaint and actually draws the scene
 // when its `paint` method is called.
 class _BoardPainter extends CustomPainter {
-  const _BoardPainter({required this.board});
+  _BoardPainter({required this.board}) : super(repaint: TimerNotifier()) {}
 
   final Board board;
-
-  // void add_listener(){
-  //   addListener(() { })
-  // }
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -229,7 +236,6 @@ class _BoardPainter extends CustomPainter {
   // We should repaint whenever the board changes, such as board.selected.
   @override
   bool shouldRepaint(_BoardPainter oldDelegate) {
-    // return oldDelegate.board != board;
     return true;
   }
 }
