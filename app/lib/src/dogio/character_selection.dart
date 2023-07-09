@@ -116,6 +116,7 @@ class _CharacterSelectionScreen extends State<CharacterSelectionScreen> {
             ElevatedButton(
               child: Text('Let\'s go!'),
               onPressed: () {
+                // TODO set the selected doggo to have strategy of NONE
                 print('misha wants to play puzzle: ${_anchor.toStringAsFixed(2)}');
                 GoRouter.of(context).go('/play');
               },

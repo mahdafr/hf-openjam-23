@@ -1,3 +1,4 @@
+import 'package:vector_math/vector_math.dart';
 import 'descriptors.dart';
 
 class Doggo {
@@ -13,11 +14,15 @@ class Doggo {
   Breed get starterBreed => breed[0];
   int get numBreeds => breed.length;
 
-  Position position;
+  Vector2 position;
   Motion motion;
   double get x => position.x;
   double get y => position.y;
   double get vel => motion.velocity;
+
+  Strategy agentStrategy;
+
+  Strategy get strategy => agentStrategy;
 
   /// The achievement to unlock when the level is finished, if any.
   final String? achievementIdIOS;
@@ -31,6 +36,7 @@ class Doggo {
     required this.accessory,
     required this.position,
     required this.motion,
+    this.agentStrategy = Strategy.none,
     this.achievementIdIOS,
     this.achievementIdAndroid,
     this.size = 1,

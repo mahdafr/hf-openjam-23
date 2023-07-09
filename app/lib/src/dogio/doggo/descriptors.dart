@@ -1,12 +1,7 @@
 enum Breed { husky, shepherd, chihuahua, labrador, pug, poodle }
 enum Accessory { glasses, hat, sweater }
 enum SpeedMod { accel, decel, none }
-
-class Position {
-  double x;
-  double y;
-  Position({this.x = 0, this.y = 0});
-}
+enum Strategy { smart, close, lazy, none }
 
 class Motion {
   double velocity;
