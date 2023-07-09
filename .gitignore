@@ -91,4 +91,4 @@ app/.flutter-plugins-dependencies
 *.lock
 
 app/build
-app/assets/images/dogs/*.jpg
+app/assets/images/dogs/*

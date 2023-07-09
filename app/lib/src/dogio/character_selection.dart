@@ -92,20 +92,21 @@ class CharacterSelectionScreenOld extends StatelessWidget {
       appBar: AppBar(title: Text('Select your character')),
       body: Builder(
         builder: (context) {
+          var pad = MediaQuery.of(context).padding;
           final double height = MediaQuery.of(context).size.height;
           return CarouselSlider(
             options: CarouselOptions(
-              height: height/2,
+              height: height - pad.top - pad.bottom,
               viewportFraction: 1.0,
               enlargeCenterPage: false,
-              autoPlay: true,
+              autoPlay: false,
             ),
             items: imgList
                 .map((item) => Center(
-                    child: Image.network(
+                        child: Image.network(
                       item,
                       fit: BoxFit.cover,
-                      height: height/2,
+                      height: height - pad.top - pad.bottom,
                     )))
                 .toList(),
           );

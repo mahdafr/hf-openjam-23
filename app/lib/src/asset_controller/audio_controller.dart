@@ -140,7 +140,7 @@ class AudioController {
     _log.info(() => '- Chosen filename: $filename');
 
     final currentPlayer = _sfxPlayers[_currentSfxPlayer];
-    currentPlayer.play(AssetSource('dogs/$filename'),
+    currentPlayer.play(AssetSource('sfx/$filename'),
         volume: soundTypeToVolume(breed));
     _currentSfxPlayer = (_currentSfxPlayer + 1) % _sfxPlayers.length;
   }
