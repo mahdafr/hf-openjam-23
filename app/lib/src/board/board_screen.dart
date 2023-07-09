@@ -2,18 +2,16 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 import 'dart:async';
-import 'dart:collection' show IterableMixin;
 import 'dart:math';
-import 'dart:ui';
+
 import 'package:dogio/src/dogio/doggo/doggos.dart';
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart' hide Level;
 import 'package:vector_math/vector_math.dart' show Vector2;
 
-import 'package:logging/logging.dart' hide Level;
-
 import '../dogio/doggo/ai_move.dart';
-import '../dogio/doggo/players.dart';
 import '../dogio/doggo/descriptors.dart';
+import '../dogio/doggo/players.dart';
 
 class MinesweeperScreen extends StatefulWidget {
   // final GameLevel level;
@@ -39,7 +37,7 @@ class _MinesweeperScreen extends State<MinesweeperScreen>
   static const _kBoardWidth = 2500.0;
   static const _kBoardHeight = 1200.0;
 
-  Board _board = Board(
+  final Board _board = Board(
     boardWidth: _kBoardWidth,
     boardHeight: _kBoardHeight,
   );
@@ -201,7 +199,7 @@ class TimerNotifier extends ChangeNotifier {
 // CustomPainter is what is passed to CustomPaint and actually draws the scene
 // when its `paint` method is called.
 class _BoardPainter extends CustomPainter {
-  _BoardPainter({required this.board}) : super(repaint: TimerNotifier()) {}
+  _BoardPainter({required this.board}) : super(repaint: TimerNotifier());
 
   final Board board;
 
@@ -294,8 +292,7 @@ class Board extends Object {
         assert(boardHeight > 0)
   // assert(rectRadius > 0),
   // assert(rectMargin >= 0)
-  {}
-
+;
   final double boardWidth; // Number of cells in the x axis
   final double boardHeight; // Number of cells in the y axis
   // final double rectRadius; // Pixel radius of a rectangle (center to vertex).

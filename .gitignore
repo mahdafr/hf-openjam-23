@@ -89,3 +89,6 @@ app/.flutter-plugins
 app/.flutter-plugins-dependencies
 .vscode/
 *.lock
+
+app/build
+app/assets/images/dogs/*.jpg

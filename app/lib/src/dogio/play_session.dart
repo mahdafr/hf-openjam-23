@@ -10,8 +10,8 @@ import 'package:logging/logging.dart' hide Level;
 import 'package:provider/provider.dart';
 
 import '../ads/ads_controller.dart';
-import '../audio/audio_controller.dart';
-import '../audio/sounds.dart';
+import '../asset_controller/audio_controller.dart';
+import '../dogio/doggo/descriptors.dart';
 import '../game_internals/level_state.dart';
 import '../games_services/games_services.dart';
 import '../games_services/score.dart';
@@ -152,7 +152,7 @@ class _PlaySessionScreen extends State<PlaySessionScreen> {
     });
 
     final audioController = context.read<AudioController>();
-    audioController.playSfx(SfxType.congrats);
+    audioController.playSfx(Breed.poo);
 
     final gamesServicesController = context.read<GamesServicesController?>();
     if (gamesServicesController != null) {

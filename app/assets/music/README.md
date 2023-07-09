@@ -1,6 +1,1 @@
-Music in the template is by Mr Smith, and licensed under Creative Commons
-Attribution 4.0 International (CC BY 4.0).
-
-https://freemusicarchive.org/music/mr-smith
-
-Mr Smith's music is used in this template project with his explicit permission.
+Music was sourced from sites such as [pixabay.com](https://pixabay.com/music/search/genre/video%20games/) and [tunetank.com](https://tunetank.com/gaming/)

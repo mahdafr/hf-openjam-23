@@ -1,7 +1,9 @@
+import 'dart:math';
+
 import 'package:vector_math/vector_math.dart';
+
 import 'descriptors.dart';
 import 'doggos.dart';
-import 'dart:math';
 
 int closest = -1, slowest = -1;
 

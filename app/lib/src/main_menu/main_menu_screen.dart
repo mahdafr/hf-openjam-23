@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../audio/audio_controller.dart';
-import '../audio/sounds.dart';
+import '../asset_controller/audio_controller.dart';
+import '../dogio/doggo/descriptors.dart';
 import '../games_services/games_services.dart';
 import '../settings/settings.dart';
 import '../style/palette.dart';
@@ -46,7 +46,7 @@ class MainMenuScreen extends StatelessWidget {
           children: [
             FilledButton(
               onPressed: () {
-                audioController.playSfx(SfxType.buttonTap);
+                audioController.playSfx(Breed.pug);
                 GoRouter.of(context).go('/select');
               },
               child: const Text('Select dogio'),

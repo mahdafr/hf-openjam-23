@@ -1,4 +1,4 @@
-enum Breed { husky, shepherd, chihuahua, labrador, pug, poodle }
+enum Breed { husk, shep, chih, pug, lab, poo }
 enum Accessory { glasses, hat, sweater }
 enum SpeedMod { accel, decel, none }
 enum Strategy { smart, close, lazy, none }

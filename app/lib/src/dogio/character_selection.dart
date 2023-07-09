@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart' hide Level;
 
 // import '../style/palette.dart';
+import '../asset_controller/images.dart';
 import 'doggo/players.dart';
-import 'doggo/resources/dog_art.dart';
 
 // ignore: must_be_immutable, use_key_in_widget_constructors
 class CharacterSelectionScreen extends StatelessWidget {
@@ -95,17 +95,17 @@ class CharacterSelectionScreenOld extends StatelessWidget {
           final double height = MediaQuery.of(context).size.height;
           return CarouselSlider(
             options: CarouselOptions(
-              height: height,
+              height: height/2,
               viewportFraction: 1.0,
               enlargeCenterPage: false,
               autoPlay: true,
             ),
             items: imgList
                 .map((item) => Center(
-                        child: Image.network(
+                    child: Image.network(
                       item,
                       fit: BoxFit.cover,
-                      height: height,
+                      height: height/2,
                     )))
                 .toList(),
           );

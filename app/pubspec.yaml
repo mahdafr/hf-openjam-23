@@ -45,6 +45,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/dogs/
     - assets/music/
     - assets/sfx/
 

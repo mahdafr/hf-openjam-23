@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import '../audio/audio_controller.dart';
-import '../audio/sounds.dart';
+import '../asset_controller/audio_controller.dart';
+import '../dogio/doggo/descriptors.dart';
 import '../player_progress/player_progress.dart';
 import '../style/palette.dart';
 import '../style/responsive_screen.dart';
@@ -46,7 +46,7 @@ class LevelSelectionScreenOld extends StatelessWidget {
                           level.number - 1,
                       onTap: () {
                         final audioController = context.read<AudioController>();
-                        audioController.playSfx(SfxType.buttonTap);
+                        audioController.playSfx(Breed.lab);
 
                         GoRouter.of(context)
                             .go('/play/session/${level.number}');
@@ -59,7 +59,7 @@ class LevelSelectionScreenOld extends StatelessWidget {
                           1,
                       onTap: () {
                         final audioController = context.read<AudioController>();
-                        audioController.playSfx(SfxType.buttonTap);
+                        audioController.playSfx(Breed.husk);
 
                         GoRouter.of(context)
                             .go('/play/session/minesweeper/${2}');
