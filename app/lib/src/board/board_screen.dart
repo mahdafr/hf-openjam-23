@@ -217,9 +217,24 @@ class _BoardPainter extends CustomPainter {
 
     void drawPlayers(List<Doggo> players) {
       for (Doggo player in players) {
-        Paint paint = Paint();
-        paint.color = Color.fromARGB(255, 240, 240, 242);
-        canvas.drawCircle(Offset(player.x, player.y), player.size, paint);
+        AssetImage image = AssetImage(getImageName(player));
+        Image img = Image(
+          image: image,
+        );
+        Rect r = Rect.fromCenter(
+            center: Offset(player.x, player.y),
+            width: player.size,
+            height: player.size);
+        paintImage(
+            canvas: canvas,
+            scale: player.size,
+            rect: r,
+            image: img as Image,
+            fit: BoxFit.cover);
+        // canvas.drawImage(img, Offset(player.x, player.y), paint);
+        // Paint paint = Paint();
+        // paint.color = Color.fromARGB(255, 240, 240, 242);
+        // canvas.drawCircle(Offset(player.x, player.y), player.size, paint);
       }
     }
 
@@ -289,6 +304,10 @@ class _BoardPainter extends CustomPainter {
       double areaWon = pi * pow(playerEaten.size, 2);
       double newRadius = sqrt((playerArea + areaWon) / pi);
       playerWhoAte.size = newRadius;
+      if ( addNewBreed(playerWhoAte, playerEaten) ) {
+        playerWhoAte.breed.add(playerEaten.starterBreed);
+        // playerWhoAte.breedWeight.add(playerEaten.starterBreed); TODO for the future
+      }
     }
 
     if (player1.size < player2.size) {
@@ -331,7 +350,7 @@ class Board extends Object {
         assert(boardHeight > 0)
   // assert(rectRadius > 0),
   // assert(rectMargin >= 0)
-;
+  ;
   final double boardWidth; // Number of cells in the x axis
   final double boardHeight; // Number of cells in the y axis
   // final double rectRadius; // Pixel radius of a rectangle (center to vertex).
