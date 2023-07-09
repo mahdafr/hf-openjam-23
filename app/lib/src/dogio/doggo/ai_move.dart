@@ -15,6 +15,7 @@ Vector2 calculateMove(int agent, List<Doggo> players, Strategy strat) {
       desired = slowest;
       break;
     case Strategy.smart:
+      desired = 0;
       // get list of those smaller than you
       var edibles =
           players.where((doggo) => doggo.size < players[agent].size).toList();
@@ -31,11 +32,11 @@ Vector2 calculateMove(int agent, List<Doggo> players, Strategy strat) {
         }
         Vector2 sourcePosition = players[agent].position;
         Vector2 destPosition = players[randomOpponent].position;
-        return getUnitVector(sourcePosition, players[randomOpponent].position);
+        return getUnitVector(sourcePosition, destPosition);
       }
       for (var i = 0; i < edibles.length; i++) {
         if (i == agent) continue;
-        Vector2 dst = players[i].position;
+        Vector2 dst = edibles[i].position;
         // find closest
         if (magnitude(pos, dst) < magnitude(pos, edibles[desired].position)) {
           desired = i;
