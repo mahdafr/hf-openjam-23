@@ -219,6 +219,9 @@ class _BoardPainter extends CustomPainter {
       for (Doggo player in players) {
         Paint paint = Paint();
         paint.color = Color.fromARGB(255, 240, 240, 242);
+        if (player == board.findPlayer()) {
+          paint.color = Color.fromARGB(255, 0, 125, 31);
+        }
         canvas.drawCircle(Offset(player.x, player.y), player.size, paint);
       }
     }
@@ -237,6 +240,19 @@ class _BoardPainter extends CustomPainter {
       //TODO from unit vector, use velocity to find new position
       player.position.x += vectorMovement.x;
       player.position.y += vectorMovement.y;
+      if (player.position.x < 0) {
+        player.position.x = 0;
+      }
+      if (player.position.y < 0) {
+        player.position.y = 0;
+      }
+
+      if (player.position.x > board.boardWidth) {
+        player.position.x = board.boardWidth;
+      }
+      if (player.position.y > board.boardHeight) {
+        player.position.y = board.boardHeight;
+      }
 
       playerId += 1;
     }
@@ -269,7 +285,7 @@ class _BoardPainter extends CustomPainter {
         }
       }
     }
-    addPoints(players, 0.0002);
+    addPoints(players, 0.002);
     if (isWinner(board.dogPlayers, 500)) {}
   }
 
@@ -331,7 +347,7 @@ class Board extends Object {
         assert(boardHeight > 0)
   // assert(rectRadius > 0),
   // assert(rectMargin >= 0)
-;
+  ;
   final double boardWidth; // Number of cells in the x axis
   final double boardHeight; // Number of cells in the y axis
   // final double rectRadius; // Pixel radius of a rectangle (center to vertex).
