@@ -87,3 +87,6 @@ lint/tmp/
 app/.dart_tool/
 app/.flutter-plugins-dependencies
 .vscode/
+
+generate_assets/dockerized_stablediff/
+generate_assets/*.txt
