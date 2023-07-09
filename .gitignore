@@ -86,3 +86,4 @@ lint/tmp/
 
 app/.dart_tool/
 app/.flutter-plugins-dependencies
+.vscode/

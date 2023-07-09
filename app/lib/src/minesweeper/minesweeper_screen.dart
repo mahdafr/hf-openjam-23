@@ -227,6 +227,7 @@ class _BoardPainter extends CustomPainter {
     drawPlayers(board.dogPlayers);
     for (Doggo player in board.dogPlayers) {
       List<double> newCoords = moveRandomly(player, board.dogPlayers);
+
       //TODO from unit vector, use velocity to find new position
       player.position.x = newCoords[0];
       player.position.y = newCoords[1];
@@ -247,29 +248,6 @@ List<double> moveRandomly(Doggo player, List<Doggo> players) {
   double newY = player.y + yMovement;
   return [newX, newY];
 }
-
-// class Player {
-//   Player(this.x, this.y, {color = const Color.fromARGB(255, 135, 135, 135)});
-
-//   double x;
-//   double y;
-//   Color color = Color.fromARGB(255, 135, 135, 135);
-
-//   @override
-//   String toString() {
-//     return 'Player($x, $y, $color)';
-//   }
-
-//   void moveRandomly() {
-//     double xMovement = Random().nextDouble() - 0.5;
-//     double yMovement = Random().nextDouble() - 0.5;
-//     x = x + xMovement;
-//     y = y + yMovement;
-//   }
-
-//   @override
-//   int get hashCode => Object.hash(x, y);
-// }
 
 // The entire state of the hex board and abstraction to get information about
 // it. Iterable so that all BoardPoints on the board can be iterated over.
@@ -297,6 +275,8 @@ class Board extends Object {
     return Size((rectRadius + rectMargin) * boardWidth,
         (rectRadius + rectMargin) * boardHeight);
   }
+
+  void forcePointOnBoard(int x, int y) {}
 
   bool isValidPoint(int x, int y) {
     return !(x < 0 || y < 0 || x >= boardWidth || y >= boardHeight);
