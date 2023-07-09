@@ -7,6 +7,7 @@
 // import 'package:firebase_core/firebase_core.dart';
 // import 'firebase_options.dart';
 
+import 'package:dogio/src/minesweeper/minesweeper_screen.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -133,36 +134,38 @@ class MyApp extends StatelessWidget {
             GoRoute(
                 path: 'select',
                 pageBuilder: (context, state) => buildMyTransition<void>(
-                      child: CharacterSelectionScreen(key: Key('character selection')),
+                      child: CharacterSelectionScreen(
+                          key: Key('character selection')),
                       color: context.watch<Palette>().backgroundSelection,
                     )),
             GoRoute(
-              path: 'play',
-              pageBuilder: (context, state) => buildMyTransition<void>(
-                  child: PlaySessionScreen(key: Key('play session')),
-                  color: context.watch<Palette>().backgroundSession,
-                ),
-              routes: [
-                GoRoute(
-                  path: 'won',
-                  pageBuilder: (context, state) {
-                    final map = state.extra! as Map<String, dynamic>;
-                    final score = map['score'] as Score;
+                path: 'play',
+                pageBuilder: (context, state) => buildMyTransition<void>(
+                      child: MinesweeperScreen(key: Key('play session')),
+                      color: context.watch<Palette>().backgroundSession,
+                    ),
+                routes: [
+                  GoRoute(
+                    path: 'won',
+                    pageBuilder: (context, state) {
+                      final map = state.extra! as Map<String, dynamic>;
+                      final score = map['score'] as Score;
 
-                    return buildMyTransition<void>(
-                      child: WinGameScreen(
-                        score: score,
-                        key: const Key('win game'),
-                        returnToMain: false,
-                      ),
-                      color: context.watch<Palette>().backgroundWin,
-                    );
-                  },
-                ),
-              ]),
+                      return buildMyTransition<void>(
+                        child: WinGameScreen(
+                          score: score,
+                          key: const Key('win game'),
+                          returnToMain: false,
+                        ),
+                        color: context.watch<Palette>().backgroundWin,
+                      );
+                    },
+                  ),
+                ]),
             GoRoute(
               path: 'settings',
-              builder: (context, state) => const SettingsScreen(key: Key('settings')),
+              builder: (context, state) =>
+                  const SettingsScreen(key: Key('settings')),
             ),
           ]),
     ],
