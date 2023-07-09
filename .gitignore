@@ -90,3 +90,5 @@ app/.flutter-plugins-dependencies
 
 generate_assets/dockerized_stablediff/
 generate_assets/*.txt
+generate_assets/input
+generate_assets/outputs
