@@ -7,12 +7,13 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:dogio/src/dogio/doggo/doggos.dart';
 import 'package:flutter/material.dart';
-import 'package:vector_math/vector_math_64.dart' show Vector3;
+import 'package:vector_math/vector_math.dart' show Vector2;
 
 import 'package:logging/logging.dart' hide Level;
 
-import '../level_selection/levels.dart';
+import '../dogio/doggo/ai_move.dart';
 import '../dogio/doggo/players.dart';
+import '../dogio/doggo/descriptors.dart';
 
 class MinesweeperScreen extends StatefulWidget {
   // final GameLevel level;
@@ -33,19 +34,14 @@ class _MinesweeperScreen extends State<MinesweeperScreen>
 
   late DateTime _startOfPlay;
   final GlobalKey _targetKey = GlobalKey();
-  // The radius of a Rectangle tile in pixels.
-  static const _kRectRadius = 16.0;
-  // The size border between cells.
-  static const _kRectBorder = 1.0;
+
   // The radius of the entire board in hexagons, not including the center.
-  static const _kBoardWidth = 16;
-  static const _kBoardHeight = 30;
+  static const _kBoardWidth = 2500.0;
+  static const _kBoardHeight = 1200.0;
 
   Board _board = Board(
     boardWidth: _kBoardWidth,
     boardHeight: _kBoardHeight,
-    rectRadius: _kRectRadius,
-    rectMargin: _kRectBorder,
   );
 
   final TransformationController _transformationController =
@@ -211,7 +207,12 @@ class _BoardPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final Rect boardDims = Rect.fromLTWH(0, 0, 600, 600);
+    // final Rect boardDims =
+    //     Rect.fromLTWH(0, 0, board.boardWidth, board.boardHeight);
+    // final Rect boardDims = Rect.fromLTWH(board.boardWidth / -2,
+    //     board.boardHeight / -2, board.boardWidth / 2, board.boardHeight / 2);
+    final Rect boardDims =
+        Rect.fromLTWH(0, 0, board.boardWidth, board.boardHeight);
     Paint paint = Paint();
     paint.color = Color.fromARGB(255, 47, 47, 51);
     canvas.drawRect(boardDims, paint);
@@ -220,17 +221,21 @@ class _BoardPainter extends CustomPainter {
       for (Doggo player in players) {
         Paint paint = Paint();
         paint.color = Color.fromARGB(255, 240, 240, 242);
-        canvas.drawCircle(Offset(player.x, player.y), 30, paint);
+        canvas.drawCircle(Offset(player.x, player.y), player.size, paint);
       }
     }
 
     drawPlayers(board.dogPlayers);
+    int playerId = 0;
     for (Doggo player in board.dogPlayers) {
-      List<double> newCoords = moveRandomly(player, board.dogPlayers);
+      Vector2 vectorMovement = calculateMove(playerId, players, Strategy.smart);
+      // List<double> newCoords = moveRandomly(player, board.dogPlayers);
 
       //TODO from unit vector, use velocity to find new position
-      player.position.x = newCoords[0];
-      player.position.y = newCoords[1];
+      player.position.x += vectorMovement.x;
+      player.position.y += vectorMovement.y;
+
+      playerId += 1;
     }
   }
 
@@ -256,24 +261,24 @@ class Board extends Object {
   Board({
     required this.boardWidth,
     required this.boardHeight,
-    required this.rectRadius,
-    required this.rectMargin,
+    // required this.rectRadius,
+    // required this.rectMargin,
     List<Doggo> players = const [],
   })  : assert(boardWidth > 0),
-        assert(boardHeight > 0),
-        assert(rectRadius > 0),
-        assert(rectMargin >= 0) {}
+        assert(boardHeight > 0)
+  // assert(rectRadius > 0),
+  // assert(rectMargin >= 0)
+  {}
 
-  final int boardWidth; // Number of cells in the x axis
-  final int boardHeight; // Number of cells in the y axis
-  final double rectRadius; // Pixel radius of a rectangle (center to vertex).
-  final double rectMargin; // Margin between cells.
+  final double boardWidth; // Number of cells in the x axis
+  final double boardHeight; // Number of cells in the y axis
+  // final double rectRadius; // Pixel radius of a rectangle (center to vertex).
+  // final double rectMargin; // Margin between cells.
   final List<Doggo> dogPlayers = players;
 
   // Get the size in pixels of the entire board.
   Size get size {
-    return Size((rectRadius + rectMargin) * boardWidth,
-        (rectRadius + rectMargin) * boardHeight);
+    return Size(boardWidth + 30, boardHeight + 30);
   }
 
   void forcePointOnBoard(int x, int y) {}
@@ -287,8 +292,8 @@ class Board extends Object {
     final nextBoard = Board(
       boardWidth: boardWidth,
       boardHeight: boardHeight,
-      rectRadius: rectRadius,
-      rectMargin: rectMargin,
+      // rectRadius: rectRadius,
+      // rectMargin: rectMargin,
     );
     return nextBoard;
   }

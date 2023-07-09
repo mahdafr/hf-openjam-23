@@ -1,6 +1,7 @@
 import 'package:vector_math/vector_math.dart';
 import 'descriptors.dart';
 import 'doggos.dart';
+import 'dart:math';
 
 int closest = -1, slowest = -1;
 
@@ -21,6 +22,17 @@ Vector2 calculateMove(int agent, List<Doggo> players, Strategy strat) {
       // edibles.sort((a, b) => a.size.compareTo(b.size));
       // find the closest
       Vector2 pos = players[agent].position;
+      // If they are the smallest, then go for random.
+      if (edibles.isEmpty) {
+        var rng = Random();
+        int randomOpponent = rng.nextInt(players.length);
+        if (randomOpponent == agent) {
+          randomOpponent = (randomOpponent + 1) % players.length;
+        }
+        Vector2 sourcePosition = players[agent].position;
+        Vector2 destPosition = players[randomOpponent].position;
+        return getUnitVector(sourcePosition, players[randomOpponent].position);
+      }
       for (var i = 0; i < edibles.length; i++) {
         if (i == agent) continue;
         Vector2 dst = players[i].position;
@@ -63,5 +75,5 @@ double magnitude(Vector2 src, Vector2 dst) {
 }
 
 Vector2 getUnitVector(Vector2 agent, Vector2 target) {
-  return (agent - target) / magnitude(agent, target);
+  return (target - agent) / magnitude(agent, target);
 }

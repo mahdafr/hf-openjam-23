@@ -28,6 +28,13 @@ To run, you must have the following installed:
 - [flutter](https://docs.flutter.dev/get-started/install), and
 - [dart](https://dart.dev/get-dart).
 
+## Refresh Packages
+You might need to run one or both of the following commands on fresh clones:
+```bash
+$ flutter pub cache repair
+$ flutter packages get
+```
+
 ## Run
 To find which devices you can deploy the game to, execute:
 ```bash

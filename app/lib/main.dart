@@ -7,7 +7,7 @@
 // import 'package:firebase_core/firebase_core.dart';
 // import 'firebase_options.dart';
 
-import 'package:dogio/src/minesweeper/minesweeper_screen.dart';
+import 'package:dogio/src/board/board_screen.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

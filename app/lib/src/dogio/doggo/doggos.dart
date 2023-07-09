@@ -8,7 +8,7 @@ class Doggo {
   var accessory = <Accessory>[];
 
   final int breedWeightMax = 100;
-  int size;
+  double size;
 
   int get maxWeight => breedWeightMax;
   Breed get starterBreed => breed[0];
@@ -39,8 +39,8 @@ class Doggo {
     this.agentStrategy = Strategy.none,
     this.achievementIdIOS,
     this.achievementIdAndroid,
-    this.size = 1,
-  }): assert(
+    this.size = 5,
+  }) : assert(
             (achievementIdAndroid != null && achievementIdIOS != null) ||
                 (achievementIdAndroid == null && achievementIdIOS == null),
             'Either both iOS and Android achievement ID must be provided, '
