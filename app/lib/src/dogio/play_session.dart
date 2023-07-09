@@ -24,7 +24,7 @@ import 'doggo/players.dart';
 class PlaySessionScreen extends StatefulWidget {
   final int maxScore = 1000;
 
-  PlaySessionScreen({super.key});
+  const PlaySessionScreen({super.key});
 
   @override
   State<PlaySessionScreen> createState() => _PlaySessionScreen();
