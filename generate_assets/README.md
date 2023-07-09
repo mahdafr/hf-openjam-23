@@ -27,6 +27,13 @@ Repo: [GitHub repo](https://github.com/fboulnois/stable-diffusion-docker) bc I'm
     -v "$PWD"/../../app/assets/images/dogs:/home/huggingface/output \
     ...
     ```
+    AND on line `45`:
+    ```bash
+    ...
+    # OLD: -v "$PWD"/output:/home/huggingface/output \
+    -v "$PWD"/../../app/assets/images/dogs:/home/huggingface/output \
+    ...
+    ```
 
 4. Pull the latest docker image:
     ```bash
