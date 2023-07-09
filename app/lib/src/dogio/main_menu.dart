@@ -46,7 +46,7 @@ class MainMenuScreen extends StatelessWidget {
           children: [
             FilledButton(
               onPressed: () {
-                audioController.playSfx(Breed.shep);
+                audioController.playSfx(Breed.pug);
                 GoRouter.of(context).go('/select');
               },
               child: const Text('Select character'),

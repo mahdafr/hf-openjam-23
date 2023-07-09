@@ -46,28 +46,26 @@ class LevelSelectionScreenOld extends StatelessWidget {
                           level.number - 1,
                       onTap: () {
                         final audioController = context.read<AudioController>();
-                        audioController.playSfx(Breed.lab);
+                        audioController.playSfx(Breed.husk);
 
                         GoRouter.of(context)
                             .go('/play/session/${level.number}');
                       },
                       leading: Text(level.number.toString()),
-                      title: Text(level.name + (level.number>0 ? level.number.toString() : '')),
+                      title: Text(level.name +
+                          (level.number > 0 ? level.number.toString() : '')),
                     ),
-                    ListTile(
-                      enabled: playerProgress.highestLevelReached >=
-                          1,
-                      onTap: () {
-                        final audioController = context.read<AudioController>();
-                        audioController.playSfx(Breed.husk);
+                  ListTile(
+                    enabled: playerProgress.highestLevelReached >= 1,
+                    onTap: () {
+                      final audioController = context.read<AudioController>();
+                      audioController.playSfx(Breed.husk);
 
-                        GoRouter.of(context)
-                            .go('/play/session/minesweeper/${2}');
-                      },
-                      leading: Text(6.toString()),
-                      title: Text('Level #${12}'),
-                    )
-
+                      GoRouter.of(context).go('/play/session/minesweeper/${2}');
+                    },
+                    leading: Text(6.toString()),
+                    title: Text('Level #${12}'),
+                  )
                 ],
               ),
             ),

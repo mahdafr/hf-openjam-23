@@ -152,7 +152,7 @@ class _PlaySessionScreen extends State<PlaySessionScreen> {
     });
 
     final audioController = context.read<AudioController>();
-    audioController.playSfx(Breed.poo);
+    audioController.playSfx(Breed.husk);
 
     final gamesServicesController = context.read<GamesServicesController?>();
     if (gamesServicesController != null) {

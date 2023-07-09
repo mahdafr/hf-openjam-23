@@ -2,10 +2,15 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 import 'dart:async';
+import 'dart:io';
+import 'dart:ui' as ui;
 import 'dart:math';
+import 'dart:typed_data';
+// import 'dart:ui' as ui show Image;
 
 import 'package:dogio/src/dogio/doggo/doggos.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:logging/logging.dart' hide Level;
 import 'package:vector_math/vector_math.dart' show Vector2;
 
@@ -200,8 +205,26 @@ class TimerNotifier extends ChangeNotifier {
 // when its `paint` method is called.
 class _BoardPainter extends CustomPainter {
   _BoardPainter({required this.board}) : super(repaint: TimerNotifier());
-
+  // Save images
+  List<Future<ui.Image>> imagePerPlayers = [];
   final Board board;
+
+  Future<ui.Image> getUiImage(
+      String imageAssetPath, int height, int width) async {
+    final ByteData assetImageByteData = await rootBundle.load(imageAssetPath);
+    final codec = await ui.instantiateImageCodec(
+      assetImageByteData.buffer.asUint8List(),
+      targetHeight: height,
+      targetWidth: width,
+    );
+    final image = (await codec.getNextFrame()).image;
+    return image;
+  }
+
+  void modifyImage(Doggo player, int index) {
+    Future<ui.Image> img = getUiImage(getImageName(player), 30, 30);
+    imagePerPlayers[index] = img;
+  }
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -215,26 +238,35 @@ class _BoardPainter extends CustomPainter {
     paint.color = Color.fromARGB(255, 47, 47, 51);
     canvas.drawRect(boardDims, paint);
 
-    void drawPlayers(List<Doggo> players) {
+    if (imagePerPlayers.isEmpty) {
       for (Doggo player in players) {
-        AssetImage image = AssetImage(getImageName(player));
-        Image img = Image(
-          image: image,
-        );
-        Rect r = Rect.fromCenter(
-            center: Offset(player.x, player.y),
-            width: player.size,
-            height: player.size);
-        paintImage(
-            canvas: canvas,
-            scale: player.size,
-            rect: r,
-            image: img as Image,
-            fit: BoxFit.cover);
-        // canvas.drawImage(img, Offset(player.x, player.y), paint);
-        // Paint paint = Paint();
-        // paint.color = Color.fromARGB(255, 240, 240, 242);
-        // canvas.drawCircle(Offset(player.x, player.y), player.size, paint);
+        Future<ui.Image> img = getUiImage(getImageName(player), 30, 30);
+        imagePerPlayers.add(img);
+      }
+    } else {
+      // int i = 0;
+      // for (Doggo player in players) {
+      //   modifyImage(player, i);
+      //   i += 1;
+      // }
+    }
+    Future convertImage(Future<ui.Image> img, int index) async {
+      ui.Image noFutureImg = await img;
+      canvas.drawImage(
+          noFutureImg,
+          Offset(players[index].position.x, players[index].position.y),
+          Paint());
+    }
+
+    void drawPlayers(List<Doggo> players) {
+      int j = 0;
+      for (Future<ui.Image> dogImageLoaded in imagePerPlayers) {
+        convertImage(dogImageLoaded, j);
+        // Future<ui.Image> img = getUiImage(getImageName(player), 30, 30);
+
+        // convertImage(img);
+
+        j += 1;
       }
     }
 
@@ -304,7 +336,7 @@ class _BoardPainter extends CustomPainter {
       double areaWon = pi * pow(playerEaten.size, 2);
       double newRadius = sqrt((playerArea + areaWon) / pi);
       playerWhoAte.size = newRadius;
-      if ( addNewBreed(playerWhoAte, playerEaten) ) {
+      if (addNewBreed(playerWhoAte, playerEaten)) {
         playerWhoAte.breed.add(playerEaten.starterBreed);
         // playerWhoAte.breedWeight.add(playerEaten.starterBreed); TODO for the future
       }
