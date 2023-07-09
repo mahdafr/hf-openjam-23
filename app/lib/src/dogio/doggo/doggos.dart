@@ -65,7 +65,7 @@ String getImageName(Doggo doggo) {
 
 bool addNewBreed(Doggo eater, Doggo victim) {
   for (int i = 0; i < eater.numBreeds; i++) {
-    if (eater.breed[i] == victim.breed) {
+    if (eater.breed[i] == victim.starterBreed) {
       return false;
     }
   }
