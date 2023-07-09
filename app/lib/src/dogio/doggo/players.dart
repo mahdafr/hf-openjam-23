@@ -1,5 +1,9 @@
+import 'package:vector_math/vector_math.dart';
+
 import 'descriptors.dart';
 import 'doggos.dart';
+
+
 
 var players = [
   Doggo(
@@ -7,8 +11,9 @@ var players = [
     breed: [Breed.husky],
     breedWeight: [100],
     accessory: [],
-    position: Position(x: 100, y: 100),
+    position: Vector2(100, 100),
     motion: Motion(),
+    agentStrategy: Strategy.smart,
     achievementIdIOS: 'finished',
     achievementIdAndroid: 'CdfIhE96aspNWLGSQg',
   ),
@@ -17,8 +22,9 @@ var players = [
     breed: [Breed.shepherd],
     breedWeight: [100],
     accessory: [],
-    position: Position(x: 150, y: 150),
+    position: Vector2(150, 150),
     motion: Motion(),
+    agentStrategy: Strategy.smart,
     achievementIdIOS: 'finished',
     achievementIdAndroid: 'CdfIhE96aspNWLGSQg',
   ),
@@ -27,8 +33,9 @@ var players = [
     breed: [Breed.chihuahua],
     breedWeight: [100],
     accessory: [],
-    position: Position(x: 50, y: 50),
+    position: Vector2(50, 50),
     motion: Motion(),
+    agentStrategy: Strategy.lazy,
     achievementIdIOS: 'finished',
     achievementIdAndroid: 'CdfIhE96aspNWLGSQg',
   ),
@@ -37,8 +44,9 @@ var players = [
     breed: [Breed.labrador],
     breedWeight: [100],
     accessory: [],
-    position: Position(x: 75, y: 75),
+    position: Vector2(75, 75),
     motion: Motion(),
+    agentStrategy: Strategy.smart,
     achievementIdIOS: 'finished',
     achievementIdAndroid: 'CdfIhE96aspNWLGSQg',
   ),
@@ -47,8 +55,9 @@ var players = [
     breed: [Breed.pug],
     breedWeight: [100],
     accessory: [],
-    position: Position(x: 200, y: 200),
+    position: Vector2(200, 200),
     motion: Motion(),
+    agentStrategy: Strategy.close,
     achievementIdIOS: 'finished',
     achievementIdAndroid: 'CdfIhE96aspNWLGSQg',
   ),
@@ -57,8 +66,9 @@ var players = [
     breed: [Breed.poodle],
     breedWeight: [100],
     accessory: [],
-    position: Position(x: 250, y: 250),
+    position: Vector2(250, 250),
     motion: Motion(),
+    agentStrategy: Strategy.close,
     achievementIdIOS: 'finished',
     achievementIdAndroid: 'CdfIhE96aspNWLGSQg',
   ),

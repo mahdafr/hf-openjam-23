@@ -29,6 +29,8 @@ dependencies:
   google_mobile_ads: ^2.0.1  # Ads
   in_app_purchase: ^3.0.1  # In-app purchases
   infinite_carousel: ^1.0.2
+  carousel_slider: ^4.2.1
+  vector_math: ^2.1.4
 
 dev_dependencies:
   analysis_defaults:

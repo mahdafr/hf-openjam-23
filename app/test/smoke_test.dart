@@ -3,9 +3,9 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:game_template/main.dart';
-import 'package:game_template/src/player_progress/persistence/memory_player_progress_persistence.dart';
-import 'package:game_template/src/settings/persistence/memory_settings_persistence.dart';
+import 'package:dogio/main.dart';
+import 'package:dogio/src/player_progress/persistence/memory_player_progress_persistence.dart';
+import 'package:dogio/src/settings/persistence/memory_settings_persistence.dart';
 
 void main() {
   testWidgets('smoke test', (tester) async {

@@ -35,4 +35,5 @@ class Palette {
   Color get background4 => const Color(0xffffd7ff);
   Color get backgroundSettings => const Color(0xffbfc8e3);
   Color get trueWhite => const Color(0xffffffff);
+  Color get trueBlack => const Color(0xff000000);
 }
