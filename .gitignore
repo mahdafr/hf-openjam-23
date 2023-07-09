@@ -85,5 +85,7 @@ lint/tmp/
 # lint/reports/
 
 app/.dart_tool/
+app/.flutter-plugins
 app/.flutter-plugins-dependencies
 .vscode/
+*.lock

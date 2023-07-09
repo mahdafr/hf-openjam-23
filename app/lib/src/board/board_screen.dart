@@ -237,7 +237,33 @@ class _BoardPainter extends CustomPainter {
 
       playerId += 1;
     }
+
+    // Collision checking
+    for (Doggo player1 in board.dogPlayers) {
+      for (Doggo player2 in board.dogPlayers) {
+        // Finding collision between 2 players can be done by finding the
+        // smaller player, getting the unit vector, multiplying it by it's size,
+        // and then checking if that position is inside the larger player
+        Doggo smallerPlayer = player1;
+        Doggo largerPlayer = player2;
+        if (player2.size < smallerPlayer.size) {
+          smallerPlayer = player2;
+          largerPlayer = player1;
+        }
+        Vector2 unitVec =
+            getUnitVector(smallerPlayer.position, largerPlayer.position);
+        Vector2 smallerPlayerEdge = unitVec * smallerPlayer.size;
+        num circleEquation = pow(smallerPlayerEdge.x - largerPlayer.x, 2) +
+            pow(smallerPlayerEdge.x - largerPlayer.x, 2);
+
+        if (circleEquation < largerPlayer.size) {
+          collision(smallerPlayer, largerPlayer);
+        }
+      }
+    }
   }
+
+  void collision(Doggo player1, player2) {}
 
   // We should repaint whenever the board changes, such as board.selected.
   @override
